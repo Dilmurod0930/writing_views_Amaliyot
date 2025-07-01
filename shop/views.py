@@ -2,8 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def index(resquest):
+def index(request):
     return render(request, 'shop/index.html')
 
 def about(request):
     return render(request, 'shop/about.html')
+    
