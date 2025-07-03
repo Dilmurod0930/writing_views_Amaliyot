@@ -8,6 +8,11 @@ class  Category(models.Model):
     def __str__(self):
         return self.title
     
+    class Meta:
+        verbose_name_plural = 'Categories'
+        ordering = ['title']
+        verbose_name = 'Category'
+    
 
 # Create your models here.
 class Product(models.Model):
@@ -26,3 +31,8 @@ class Product(models.Model):
 
     def  __str__(self):
         return  f"{  self.name}  {self.price}"
+
+    class Meta:
+        verbose_name_plural = 'Products'
+        ordering = ['-id']
+        verbose_name = 'Product'

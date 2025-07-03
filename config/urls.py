@@ -21,5 +21,5 @@ from config  import  settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('shop/', include('shop.urls')),  # Shop ilovasining URL-larini qo'shish
+    path('', include('shop.urls')),  # Shop ilovasining URL-larini qo'shish
 ] +  static(settings.MEDIA_URL , document_root = settings.MEDIA_ROOT)

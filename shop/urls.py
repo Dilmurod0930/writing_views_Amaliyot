@@ -3,5 +3,5 @@ from  .views  import index,  product_detail
 
 urlpatterns = [
     path('', index, name='index'),  # Shop ilovasining asosiy sahifasi
-    path('detail/', product_detail,  name='product-detail')
+    path('detail/<int:product_id>', product_detail,  name='product-detail')
 ]
