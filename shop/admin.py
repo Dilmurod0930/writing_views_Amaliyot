@@ -6,3 +6,9 @@ admin.site.register(Product)
 admin.site.register(Category)
 
 
+admin.site.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'discount', 'category')
+    list_filter = ('category',)
+    search_fields = ('name', 'description')
+    list_editable = ('price', 'discount')
