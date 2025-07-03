@@ -1,5 +1,5 @@
 from django.db import models
-
+from  decimal import Decimal
 
 
 class  Category(models.Model):
@@ -21,7 +21,7 @@ class Product(models.Model):
     @property
     def  discounted_price(self):
         if self.discount > 0:
-            return self.price *( 1- (self.price / 100))
+            return self.price * Decimal(f"{ 1- (self.discount / 100)}")
         return self.price
 
     def  __str__(self):
