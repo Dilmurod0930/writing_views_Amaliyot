@@ -45,4 +45,18 @@ class Product(BaseModel):
         verbose_name_plural = 'Products'
         ordering = ['-id']
         verbose_name = 'Product'
-        ordering = ['-price']
+        ordering = ['price']
+
+
+class  Order(BaseModel):
+    user = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
+    quantity = models.PositiveIntegerField(default=1)
+
+
+    def __str__(self):
+        return f"Order {self.id} by {self.user}"
+
+    class Meta:
+        verbose_name_plural = 'Orders'
+        verbose_name = 'Order'
