@@ -2,7 +2,16 @@ from django.db import models
 from  decimal import Decimal
 
 
-class  Category(models.Model):
+class  BaseModel(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+
+class  Category(BaseModel):
     title = models.CharField(max_length=100)
 
     def __str__(self):
@@ -15,7 +24,7 @@ class  Category(models.Model):
     
 
 # Create your models here.
-class Product(models.Model):
+class Product(BaseModel):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -36,3 +45,4 @@ class Product(models.Model):
         verbose_name_plural = 'Products'
         ordering = ['-id']
         verbose_name = 'Product'
+        ordering = ['-price']
