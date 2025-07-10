@@ -4,14 +4,22 @@ from django.http  import  HttpResponse
 # Create your views here.
 
 def index(request,  catigorya_id=None):
-    category = Category.objects.all()
+    categories = Category.objects.all()
+    searech_query = request.GET.get('q', '')
     if catigorya_id:
         praducts = Product.objects.filter(category = catigorya_id)
     else:
         praducts = Product.objects.all()
-        context = {
+
+    if searech_query:
+        praducts = praducts.filter(name__icontains=searech_query)
+    if not praducts:
+        return render(request, 'shop/eror.html')
+    
+    
+    context = {
             'praducts': praducts,
-            'categories': category
+            'categories': categories
         }
     return render(request, 'shop/index.html', context)
 
